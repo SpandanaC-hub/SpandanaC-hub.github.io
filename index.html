@@ -1,551 +1,123 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sai Spandana Chintapalli</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      background: #fff;
-      color: #111;
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    a { color: #1a56c4; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* Nav */
-    nav {
-      border-bottom: 1px solid #e5e5e5;
-      padding: 10px 0;
-      position: sticky;
-      top: 0;
-      background: #fff;
-      z-index: 10;
-    }
-    .nav-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-name {
-      font-family: system-ui, sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      color: #111;
-    }
-    .nav-links { display: flex; gap: 24px; }
-    .nav-links a {
-      font-family: system-ui, sans-serif;
-      font-size: 13px;
-      color: #555;
-      text-decoration: none;
-    }
-    .nav-links a:hover { color: #000; text-decoration: none; }
-
-    /* Main container */
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* Two-column grid */
-    .two-col {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 48px;
-    }
-
-    /* Section */
-    .section {
-      padding: 44px 0;
-      border-bottom: 1px solid #e5e5e5;
-    }
-    .section:last-of-type { border-bottom: none; }
-
-    h2 {
-      font-size: 18px;
-      font-weight: normal;
-      margin-bottom: 24px;
-      letter-spacing: 0.01em;
-    }
-
-    /* Bio section */
-    .photo-circle {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      background: #f0f0f0;
-      border: 1px solid #ddd;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      overflow: hidden;
-    }
-    .photo-circle img { width: 100%; height: 100%; object-fit: cover; }
-    .photo-placeholder {
-      font-family: system-ui, sans-serif;
-      font-size: 12px;
-      color: #aaa;
-      text-align: center;
-      line-height: 1.5;
-    }
-    .sidebar-name {
-      font-size: 20px;
-      font-weight: normal;
-      margin-bottom: 4px;
-      line-height: 1.3;
-    }
-    .sidebar-affil {
-      font-family: system-ui, sans-serif;
-      font-size: 13px;
-      color: #555;
-      margin-bottom: 16px;
-      line-height: 1.6;
-    }
-    .sidebar-links {
-      font-family: system-ui, sans-serif;
-      font-size: 13px;
-      line-height: 2;
-    }
-    .sidebar-links .muted { color: #bbb; }
-
-    .bio-para {
-      font-size: 15.5px;
-      line-height: 1.85;
-      color: #111;
-      margin-bottom: 14px;
-    }
-    .bio-para:last-of-type { margin-bottom: 0; }
-
-    /* Interest tags */
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-    .tag {
-      font-family: system-ui, sans-serif;
-      font-size: 12px;
-      padding: 3px 10px;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      color: #444;
-    }
-
-    /* Publications */
-    .pub-list { display: flex; flex-direction: column; gap: 28px; }
-    .pub-item { display: flex; gap: 16px; }
-    .pub-thumb {
-      flex-shrink: 0;
-      width: 48px;
-      height: 48px;
-      background: #f5f5f5;
-      border: 1px solid #e0e0e0;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: system-ui, sans-serif;
-      font-size: 10px;
-      color: #999;
-    }
-    .pub-title { font-size: 15px; margin-bottom: 3px; line-height: 1.4; }
-    .pub-authors { font-family: system-ui, sans-serif; font-size: 13px; color: #555; margin-bottom: 3px; }
-    .pub-venue { font-family: system-ui, sans-serif; font-size: 13px; color: #777; margin-bottom: 6px; }
-    .pub-links { display: flex; gap: 10px; }
-    .pub-link {
-      font-family: system-ui, sans-serif;
-      font-size: 12px;
-      color: #1a56c4;
-      border: 1px solid #c0d0f0;
-      border-radius: 3px;
-      padding: 1px 8px;
-    }
-    .pub-link:hover { background: #f0f4ff; text-decoration: none; }
-
-    .pub-note {
-      background: #fafafa;
-      border: 1px solid #ebebeb;
-      border-radius: 6px;
-      padding: 14px 16px;
-      font-family: system-ui, sans-serif;
-      font-size: 13px;
-      color: #555;
-      line-height: 1.7;
-      margin-top: 4px;
-    }
-
-    /* Projects */
-    .section-label {
-      font-family: system-ui, sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #999;
-      margin-bottom: 20px;
-    }
-    .project-list { display: flex; flex-direction: column; gap: 20px; }
-    .project-title { font-size: 15px; margin-bottom: 3px; line-height: 1.4; }
-    .project-venue { font-family: system-ui, sans-serif; font-size: 13px; color: #777; margin-bottom: 4px; }
-    .project-desc { font-family: system-ui, sans-serif; font-size: 13px; color: #444; line-height: 1.75; }
-
-    /* Experience */
-    .exp-filters { display: flex; flex-direction: column; gap: 6px; }
-    .exp-filter-label {
-      font-family: system-ui, sans-serif;
-      font-size: 13px;
-      color: #666;
-      margin-bottom: 12px;
-    }
-    .filter-btn {
-      font-family: system-ui, sans-serif;
-      font-size: 13px;
-      text-align: left;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 2px 0;
-      color: #999;
-      font-weight: 400;
-      text-decoration: none;
-    }
-    .filter-btn.active { color: #000; font-weight: 600; text-decoration: underline; }
-
-    .exp-list { display: flex; flex-direction: column; gap: 24px; }
-    .exp-item { display: grid; grid-template-columns: 140px 1fr; gap: 20px; }
-    .exp-year { font-family: system-ui, sans-serif; font-size: 12px; color: #888; margin-bottom: 4px; line-height: 1.5; }
-    .badge {
-      font-family: system-ui, sans-serif;
-      font-size: 11px;
-      padding: 1px 7px;
-      border-radius: 3px;
-      display: inline-block;
-    }
-    .badge-academic { background: #e8f0fe; color: #1a56c4; }
-    .badge-industry { background: #fef3e2; color: #b35900; }
-    .exp-role { font-size: 15px; margin-bottom: 2px; line-height: 1.4; }
-    .exp-org { font-family: system-ui, sans-serif; font-size: 13px; color: #777; margin-bottom: 6px; }
-    .exp-desc { font-family: system-ui, sans-serif; font-size: 13px; color: #444; line-height: 1.75; }
-
-    /* Skills */
-    .skill-row { display: grid; grid-template-columns: 110px 1fr; gap: 16px; margin-bottom: 10px; }
-    .skill-label { font-family: system-ui, sans-serif; font-size: 13px; color: #888; }
-    .skill-val { font-family: system-ui, sans-serif; font-size: 13px; color: #222; line-height: 1.7; }
-
-    /* Contact */
-    .contact-intro { font-family: system-ui, sans-serif; font-size: 14px; color: #333; line-height: 1.8; margin-bottom: 20px; }
-    .contact-row { font-family: system-ui, sans-serif; font-size: 14px; line-height: 2.4; }
-    .contact-label { color: #888; display: inline-block; width: 120px; }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid #e5e5e5;
-      padding: 16px 0;
-      text-align: center;
-      font-family: system-ui, sans-serif;
-      font-size: 12px;
-      color: #aaa;
-    }
-
-    /* Responsive */
-    @media (max-width: 640px) {
-      .two-col { grid-template-columns: 1fr; gap: 24px; }
-      .exp-item { grid-template-columns: 1fr; gap: 6px; }
-      .nav-links { display: none; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Sai Spandana Chintapalli — biomedical machine learning researcher at the University of Pennsylvania.">
+<title>Sai Spandana Chintapalli</title>
+<style>
+:root{--ink:#172033;--muted:#647085;--line:#e2e7ef;--soft:#f5f8fc;--blue:#1357a6;--dark:#0d3f7c;--accent:#dcecff;--max:1120px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:82px}body{margin:0;color:var(--ink);background:#fff;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px;line-height:1.72}a{color:var(--blue);text-decoration:none}a:hover{color:var(--dark);text-decoration:underline}.wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.nav{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{color:var(--ink);font-size:1.06rem;font-weight:750;letter-spacing:-.01em}.brand:hover{text-decoration:none}.nav-links{display:flex;align-items:center;gap:24px;font-size:.92rem}.nav-links a{color:#475468}.nav-links a:hover{color:var(--blue);text-decoration:none}.cv-link{border:1px solid #bfd2e9;border-radius:7px;padding:6px 11px}
+main{overflow:hidden}section{padding:78px 0;border-bottom:1px solid var(--line)}.kicker{margin:0 0 10px;color:var(--blue);font-size:.76rem;font-weight:750;letter-spacing:.12em;text-transform:uppercase}h1,h2,h3{margin-top:0;line-height:1.2;letter-spacing:-.025em}h1{margin-bottom:14px;font-size:clamp(2.25rem,5vw,4rem)}h2{margin-bottom:14px;font-size:clamp(1.8rem,3.2vw,2.55rem)}h3{margin-bottom:8px;font-size:1.18rem}.lede{max-width:740px;margin:0;color:#445066;font-size:1.08rem}
+.hero{padding:90px 0 76px}.hero-grid{display:grid;grid-template-columns:260px minmax(0,1fr);gap:70px;align-items:start}.profile{text-align:center}.portrait{width:210px;aspect-ratio:1;margin:0 auto 24px;border-radius:50%;object-fit:cover;object-position:center 35%;border:5px solid #fff;box-shadow:0 0 0 1px var(--line),0 16px 45px rgba(37,61,91,.14)}.profile-name{margin:0 0 5px;font-size:1.34rem;font-weight:750}.profile-role,.profile-affil{margin:0;color:var(--muted);line-height:1.55}.profile-affil{color:var(--blue)}.socials{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 14px;margin-top:18px;font-size:.9rem}.hero-copy h1 span{color:var(--blue)}.hero-copy>p{margin:0 0 19px;max-width:770px;color:#3e495c;font-size:1.04rem}.actions{display:flex;flex-wrap:wrap;gap:11px;margin:28px 0 34px}.button{display:inline-flex;align-items:center;border:1px solid var(--blue);border-radius:7px;padding:8px 14px;font-size:.9rem;font-weight:650}.button:hover{text-decoration:none}.primary{color:#fff;background:var(--blue)}.primary:hover{color:#fff;background:var(--dark)}.secondary{color:var(--blue);background:#fff}
+.news{border-top:1px solid var(--line);padding-top:25px}.news h3{font-size:1rem}.news-list{list-style:none;margin:0;padding:0}.news-list li{display:grid;grid-template-columns:66px 1fr;gap:14px;margin:8px 0;color:#4a5568}.news-date{color:var(--muted);font-size:.86rem}.intro{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:38px}
+.research-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.research-card{position:relative;min-height:300px;padding:30px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,#fff,var(--soft));box-shadow:0 10px 30px rgba(25,48,82,.055)}.research-card:before{content:"";position:absolute;top:0;left:0;right:0;height:5px;border-radius:14px 14px 0 0;background:linear-gradient(90deg,var(--blue),#5aa0e8)}.tag{color:var(--blue);font-size:.77rem;font-weight:750;letter-spacing:.09em;text-transform:uppercase}.research-card h3{margin:11px 0 12px;font-size:1.45rem}.research-card p{margin:0 0 14px;color:#4d596c}.research-card .question{color:var(--ink);font-weight:650}.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.pill{padding:4px 9px;border-radius:999px;background:var(--accent);color:#244e7d;font-size:.75rem;font-weight:650}
+.pub{display:grid;grid-template-columns:92px minmax(0,1fr);gap:28px;padding:28px 0;border-top:1px solid var(--line)}.pub:first-child{border-top:0;padding-top:0}.pub-year{color:var(--muted);font-size:.88rem;font-weight:700}.pub-title{margin:0 0 7px;font-size:1.11rem;font-weight:750;line-height:1.43}.pub-authors,.pub-venue{margin:0 0 4px;color:#556174;font-size:.91rem;line-height:1.55}.pub-venue{color:var(--muted)}.pub-links{display:flex;gap:9px;margin-top:11px}.pub-links a{border:1px solid #c9d8ea;border-radius:5px;padding:2px 8px;font-size:.77rem;font-weight:650}.pub-links a:hover{background:var(--soft);text-decoration:none}.accepted{color:#17663b;font-weight:700}
+.timeline-item{display:grid;grid-template-columns:160px minmax(0,1fr);gap:28px;padding:24px 0;border-top:1px solid var(--line)}.timeline-item:first-child{border-top:0;padding-top:0}.time{color:var(--muted);font-size:.86rem}.timeline-item h3{margin-bottom:3px;font-size:1rem}.org{margin:0 0 7px;color:var(--blue);font-size:.91rem;font-weight:650}.timeline-item p:last-child{margin:0;color:#526074;font-size:.93rem}.split{display:grid;grid-template-columns:1fr 1fr;gap:64px}.compact{margin:20px 0 0;padding-left:19px;color:#4d596c}.compact li{margin:8px 0}.contact{padding:34px;border-radius:14px;background:var(--soft)}.contact h2{font-size:1.65rem}footer{padding:28px 0 38px;color:var(--muted);font-size:.84rem}.footer{display:flex;justify-content:space-between;gap:20px}
+@media(max-width:820px){.nav-links a:not(.cv-link){display:none}.hero-grid{grid-template-columns:1fr;gap:42px}.profile{text-align:left;display:grid;grid-template-columns:130px 1fr;column-gap:24px;align-items:center}.portrait{width:130px;grid-row:span 3;margin:0}.socials{justify-content:flex-start}.research-grid,.split{grid-template-columns:1fr}.intro{align-items:start;flex-direction:column}}
+@media(max-width:560px){.wrap{width:min(calc(100% - 28px),var(--max))}section{padding:58px 0}.hero{padding-top:55px}.profile{grid-template-columns:92px 1fr;column-gap:17px}.portrait{width:92px}.socials{grid-column:1/-1}.news-list li,.pub,.timeline-item{grid-template-columns:1fr;gap:5px}.research-card{padding:25px}.footer{flex-direction:column}}
+</style>
 </head>
 <body>
+<header><div class="wrap nav"><a class="brand" href="#top">Sai Spandana Chintapalli</a><nav class="nav-links" aria-label="Primary navigation"><a href="#about">About</a><a href="#research">Research</a><a href="#publications">Publications</a><a href="#experience">Experience</a><a class="cv-link" href="Sai_Spandana_Chintapalli_Academic_CV.pdf">CV</a></nav></div></header>
+<main id="top">
+<section class="hero" id="about"><div class="wrap hero-grid">
+  <aside class="profile"><img class="portrait" src="photo.png" alt="Sai Spandana Chintapalli"><div><p class="profile-name">Sai Spandana Chintapalli</p><p class="profile-role">PhD Candidate in Bioengineering</p><p class="profile-affil">University of Pennsylvania</p><div class="socials"><a href="mailto:schinta@engineering.upenn.edu">Email</a><a href="https://scholar.google.com/citations?hl=en&amp;user=2uJEkY4AAAAJ" target="_blank" rel="noopener">Scholar</a><a href="https://github.com/SpandanaC-hub" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/sai-spandana-chintapalli-" target="_blank" rel="noopener">LinkedIn</a></div></div></aside>
+  <div class="hero-copy"><p class="kicker">ABOUT ME</p>
+  <p>I am a PhD candidate at Penn's Artificial Intelligence in Biomedical Imaging Lab, advised by Christos Davatzikos and Hao Huang, with research mentorship from Pratik Chaudhari.</p>
+  <p>My research develops generative and representation-learning methods that distinguish normal biological variability from disease-specific effects. I am particularly interested in personalized normative modeling, disease subtyping, counterfactual generation, and multimodal biomarkers of aging and neurodegeneration.</p>
+  <p>Before my PhD, I worked at Biogen, Harvard Medical School, and Regeneron Pharmaceuticals on medical-imaging pipelines, computational research integrity, and disease quantification.</p>
+  <div class="actions"><a class="button primary" href="#research">Explore my research</a><a class="button secondary" href="Sai_Spandana_Chintapalli_Academic_CV.pdf">Download CV</a></div>
+  <div class="news"><h3>Recent news</h3><ul class="news-list"><li><span class="news-date">2026</span><span><strong>CASL-VAE</strong> accepted to NeurIPS 2026.</span></li><li><span class="news-date">2026</span><span>Received a Women in Machine Learning Travel Award to present poster at WiML Symposium @ ICML. See you in Seoul!</span></li><li><span class="news-date">2026</span><span>Presented unpaired-to-paired disease-effect modeling at the CVPR PHAROS-AIF-MIH Workshop.</span></li><li><span class="news-date">2025</span><span>Received second place in the Penn AI2D Symposium poster competition.</span></li></ul></div></div>
+</div></section>
 
-  <!-- Nav -->
-  <nav>
-    <div class="nav-inner">
-      <span class="nav-name">Sai Spandana Chintapalli</span>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </nav>
+<section id="research"><div class="wrap"><div class="intro"><div><p class="kicker">Research</p><h2>Models for biological variability and disease heterogeneity</h2><p class="lede">I build methods that move beyond population-average case-control effects toward subject-specific reference states, deviations, subtypes, and trajectories.</p></div></div>
+<div class="research-grid">
+  <article class="research-card"><span class="tag">Structured representation learning</span><h3>CASL-VAE</h3><p class="question">How can we discover disease subtypes and severity when healthy and affected samples are unpaired?</p><p>CASL-VAE separates shared biological variability from target-specific variation, then decomposes the salient space into discrete subtypes and continuous within-subtype heterogeneity. The same formulation supports paired counterfactual generation.</p><div class="meta"><span class="pill">NeurIPS 2026</span><span class="pill">Unpaired data</span><span class="pill">Semi-supervised clustering</span><span class="pill">Counterfactuals</span></div></article>
+  <article class="research-card"><span class="tag">Personalized normative modeling</span><h3>RESTORE</h3><p class="question">What would a patient's measurements look like without the disease-related effect?</p><p>RESTORE uses simulation-based self-supervision to estimate a personalized healthy reference and subject-specific deviation map. The framework is evaluated across structural MRI, longitudinal aging, and CSF proteomics.</p><div class="meta"><span class="pill">Self-supervised learning</span><span class="pill">Normative modeling</span><span class="pill">MRI + proteomics</span><span class="pill">Longitudinal validation</span></div></article>
+</div></div></section>
 
-  <div class="container">
+<section id="publications"><div class="wrap"><div class="intro"><div><p class="kicker">Selected publications</p><h2>Recent and representative work</h2></div><a href="https://scholar.google.com/citations?hl=en&amp;user=2uJEkY4AAAAJ" target="_blank" rel="noopener">View Google Scholar →</a></div>
+<div class="pub-list">
+  <article class="pub"><div class="pub-year">2026</div><div><p class="pub-title">CASL-VAE: Learning Structured Latent Variables from Unpaired Data for Semi-supervised Clustering and Paired Sample Generation</p><p class="pub-authors"><strong>Sai Spandana Chintapalli</strong>, Pratik Chaudhari, Christos Davatzikos</p><p class="pub-venue">Advances in Neural Information Processing Systems (NeurIPS) · <span class="accepted">Accepted</span></p></div></article>
+  <article class="pub"><div class="pub-year">2026</div><div><p class="pub-title">Unpaired-to-Paired Data Synthesis: Learning to Model Disease Effects via Contrastive Analysis</p><p class="pub-authors"><strong>Sai Spandana Chintapalli</strong>, Pratik Chaudhari, Christos Davatzikos</p><p class="pub-venue">CVPR Workshop on PHAROS-AIF-MIH</p></div></article>
+  <article class="pub"><div class="pub-year">2025</div><div><p class="pub-title">Parsing Disease Heterogeneity in Structural and Functional MRI-Derived Measures Using Normative Modeling and Generative Adversarial Networks</p><p class="pub-authors"><strong>Sai Spandana Chintapalli</strong>, Sindhuja T. Govindarajan, Haochang Shou, Yong Fan, Hao Huang, Christos Davatzikos</p><p class="pub-venue">SPIE Medical Imaging</p><div class="pub-links"><a href="https://doi.org/10.1117/12.3040541" target="_blank" rel="noopener">DOI</a></div></div></article>
+  <article class="pub"><div class="pub-year">2024</div><div><p class="pub-title">Generative Models of MRI-Derived Neuroimaging Features and Associated Dataset of 18,000 Samples</p><p class="pub-authors"><strong>Sai Spandana Chintapalli</strong>, Rongguang Wang, Zhijian Yang, Vasiliki Tassopoulou, et al. · Co-first author</p><p class="pub-venue">Scientific Data 11, 1330</p><div class="pub-links"><a href="https://doi.org/10.1038/s41597-024-04157-4" target="_blank" rel="noopener">DOI</a></div></div></article>
+  <article class="pub"><div class="pub-year">Under review</div><div><p class="pub-title">Personalized Normative Modeling with RESTORE, a Deep Self-Supervised Framework, Reveals Individualized Disease- and Aging-Related Biological Changes in MRI and Proteomic Measures</p><p class="pub-authors"><strong>Sai Spandana Chintapalli</strong>, Sindhuja T. Govindarajan, Guray Erus, et al.</p><p class="pub-venue">Manuscript under review, 2026</p></div></article>
+</div></div></section>
 
-    <!-- ── About ── -->
-    <div id="about" class="section">
-      <div class="two-col">
+<section id="experience"><div class="wrap"><div class="intro"><div><p class="kicker">Experience</p><h2>Research across academia and industry</h2></div></div><div class="timeline">
+  <article class="timeline-item"><div class="time">2021–present</div><div><h3>PhD Researcher</h3><p class="org">University of Pennsylvania · CBICA</p><p>Develop generative and representation-learning methods for individualized disease characterization using multi-cohort MRI, clinical, and proteomic data.</p></div></article>
+  <article class="timeline-item"><div class="time">2020–2021</div><div><h3>Data and Analytics Specialist IV</h3><p class="org">Biogen</p><p>Built MRI and PET acquisition, quality-control, de-identification, and preprocessing workflows for clinical-study data on HPC systems.</p></div></article>
+  <article class="timeline-item"><div class="time">2020</div><div><h3>Machine Learning Research Associate</h3><p class="org">Harvard Medical School</p><p>Developed metric-learning and retrieval models for near-duplicate biological image detection and co-created the BINDER benchmark.</p></div></article>
+  <article class="timeline-item"><div class="time">2019</div><div><h3>R&amp;D Intern</h3><p class="org">Regeneron Pharmaceuticals</p><p>Developed CNN segmentation and object-detection methods for quantifying inflammatory cell clusters in retinal OCT images.</p></div></article>
+</div></div></section>
 
-        <!-- Left: sidebar -->
-        <div>
-          <div class="photo-circle">
-            <!-- Replace src with your actual photo path, e.g. src="photo.jpg" -->
-            <img src="photo.png" alt="Photo">
-          </div>
-          <h1 class="sidebar-name">Sai Spandana Chintapalli</h1>
-          <p class="sidebar-affil">
-            PhD Candidate<br>
-            Bioengineering<br>
-            University of Pennsylvania
-          </p>
-          <div class="sidebar-links">
-            <div><a href="mailto:schinta@seas.upenn.edu">schinta@seas.upenn.edu</a></div>
-            <div><a href="https://github.com/SpandanaC-hub" target="_blank">GitHub</a></div>
-            <!-- Add your real Google Scholar URL when ready -->
-            <div class="muted">Google Scholar</div>
-            <!-- Add your real LinkedIn URL when ready -->
-            <div class="muted">LinkedIn</div>
-            <div style="margin-top:12px">
-              <!-- Link to your CV PDF, e.g. href="cv.pdf" -->
-              <a href="#">CV (PDF)</a>
-            </div>
-          </div>
-        </div>
+<section><div class="wrap split"><div><p class="kicker">Innovation and recognition</p><h2>Beyond publications</h2><ul class="compact"><li><strong>U.S. Patent 11,928,981 B2</strong> for Tactile Vision, granted in 2024.</li><li><strong>Co-founder of Fovea</strong>, a wearable tactile sensory-substitution system for people with blindness, which won the University of Toronto Entrepreneurship Hatchery</strong> NEST Demo Day, 2021.</li><li><strong>Grand Prize, MedHacks</strong>, Johns Hopkins University, 2019.</li><li><strong>Second Place Poster Award</strong>, Penn AI2D Symposium, 2025.</li></ul></div>
+<div class="contact" id="contact"><p class="kicker">Contact</p><h2>Research collaborations and opportunities</h2><p>I am interested in research-scientist opportunities at the intersection of machine learning, medical imaging, and computational biology.</p><p><a href="mailto:schinta@engineering.upenn.edu">schinta@engineering.upenn.edu</a><br>Philadelphia, Pennsylvania</p><div class="actions"><a class="button primary" href="mailto:schinta@engineering.upenn.edu">Email me</a><a class="button secondary" href="Sai_Spandana_Chintapalli_Academic_CV.pdf">Curriculum vitae</a></div></div></div></section>
+</main>
+<footer><div class="wrap footer"><span>© 2026 Sai Spandana Chintapalli</span><span>Biomedical machine learning · Neuroimaging · Generative models</span></div></footer><!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Sai Spandana Chintapalli — biomedical machine learning researcher at the University of Pennsylvania.">
+<title>Sai Spandana Chintapalli</title>
+<style>
+:root{--ink:#172033;--muted:#647085;--line:#e2e7ef;--soft:#f5f8fc;--blue:#1357a6;--dark:#0d3f7c;--accent:#dcecff;--max:1120px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:82px}body{margin:0;color:var(--ink);background:#fff;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px;line-height:1.72}a{color:var(--blue);text-decoration:none}a:hover{color:var(--dark);text-decoration:underline}.wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.nav{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{color:var(--ink);font-size:1.06rem;font-weight:750;letter-spacing:-.01em}.brand:hover{text-decoration:none}.nav-links{display:flex;align-items:center;gap:24px;font-size:.92rem}.nav-links a{color:#475468}.nav-links a:hover{color:var(--blue);text-decoration:none}.cv-link{border:1px solid #bfd2e9;border-radius:7px;padding:6px 11px}
+main{overflow:hidden}section{padding:78px 0;border-bottom:1px solid var(--line)}.kicker{margin:0 0 10px;color:var(--blue);font-size:.76rem;font-weight:750;letter-spacing:.12em;text-transform:uppercase}h1,h2,h3{margin-top:0;line-height:1.2;letter-spacing:-.025em}h1{margin-bottom:14px;font-size:clamp(2.25rem,5vw,4rem)}h2{margin-bottom:14px;font-size:clamp(1.8rem,3.2vw,2.55rem)}h3{margin-bottom:8px;font-size:1.18rem}.lede{max-width:740px;margin:0;color:#445066;font-size:1.08rem}
+.hero{padding:90px 0 76px}.hero-grid{display:grid;grid-template-columns:260px minmax(0,1fr);gap:70px;align-items:start}.profile{text-align:center}.portrait{width:210px;aspect-ratio:1;margin:0 auto 24px;border-radius:50%;object-fit:cover;object-position:center 35%;border:5px solid #fff;box-shadow:0 0 0 1px var(--line),0 16px 45px rgba(37,61,91,.14)}.profile-name{margin:0 0 5px;font-size:1.34rem;font-weight:750}.profile-role,.profile-affil{margin:0;color:var(--muted);line-height:1.55}.profile-affil{color:var(--blue)}.socials{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 14px;margin-top:18px;font-size:.9rem}.hero-copy h1 span{color:var(--blue)}.hero-copy>p{margin:0 0 19px;max-width:770px;color:#3e495c;font-size:1.04rem}.actions{display:flex;flex-wrap:wrap;gap:11px;margin:28px 0 34px}.button{display:inline-flex;align-items:center;border:1px solid var(--blue);border-radius:7px;padding:8px 14px;font-size:.9rem;font-weight:650}.button:hover{text-decoration:none}.primary{color:#fff;background:var(--blue)}.primary:hover{color:#fff;background:var(--dark)}.secondary{color:var(--blue);background:#fff}
+.news{border-top:1px solid var(--line);padding-top:25px}.news h3{font-size:1rem}.news-list{list-style:none;margin:0;padding:0}.news-list li{display:grid;grid-template-columns:66px 1fr;gap:14px;margin:8px 0;color:#4a5568}.news-date{color:var(--muted);font-size:.86rem}.intro{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:38px}
+.research-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.research-card{position:relative;min-height:300px;padding:30px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,#fff,var(--soft));box-shadow:0 10px 30px rgba(25,48,82,.055)}.research-card:before{content:"";position:absolute;top:0;left:0;right:0;height:5px;border-radius:14px 14px 0 0;background:linear-gradient(90deg,var(--blue),#5aa0e8)}.tag{color:var(--blue);font-size:.77rem;font-weight:750;letter-spacing:.09em;text-transform:uppercase}.research-card h3{margin:11px 0 12px;font-size:1.45rem}.research-card p{margin:0 0 14px;color:#4d596c}.research-card .question{color:var(--ink);font-weight:650}.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.pill{padding:4px 9px;border-radius:999px;background:var(--accent);color:#244e7d;font-size:.75rem;font-weight:650}
+.pub{display:grid;grid-template-columns:92px minmax(0,1fr);gap:28px;padding:28px 0;border-top:1px solid var(--line)}.pub:first-child{border-top:0;padding-top:0}.pub-year{color:var(--muted);font-size:.88rem;font-weight:700}.pub-title{margin:0 0 7px;font-size:1.11rem;font-weight:750;line-height:1.43}.pub-authors,.pub-venue{margin:0 0 4px;color:#556174;font-size:.91rem;line-height:1.55}.pub-venue{color:var(--muted)}.pub-links{display:flex;gap:9px;margin-top:11px}.pub-links a{border:1px solid #c9d8ea;border-radius:5px;padding:2px 8px;font-size:.77rem;font-weight:650}.pub-links a:hover{background:var(--soft);text-decoration:none}.accepted{color:#17663b;font-weight:700}
+.timeline-item{display:grid;grid-template-columns:160px minmax(0,1fr);gap:28px;padding:24px 0;border-top:1px solid var(--line)}.timeline-item:first-child{border-top:0;padding-top:0}.time{color:var(--muted);font-size:.86rem}.timeline-item h3{margin-bottom:3px;font-size:1rem}.org{margin:0 0 7px;color:var(--blue);font-size:.91rem;font-weight:650}.timeline-item p:last-child{margin:0;color:#526074;font-size:.93rem}.split{display:grid;grid-template-columns:1fr 1fr;gap:64px}.compact{margin:20px 0 0;padding-left:19px;color:#4d596c}.compact li{margin:8px 0}.contact{padding:34px;border-radius:14px;background:var(--soft)}.contact h2{font-size:1.65rem}footer{padding:28px 0 38px;color:var(--muted);font-size:.84rem}.footer{display:flex;justify-content:space-between;gap:20px}
+@media(max-width:820px){.nav-links a:not(.cv-link){display:none}.hero-grid{grid-template-columns:1fr;gap:42px}.profile{text-align:left;display:grid;grid-template-columns:130px 1fr;column-gap:24px;align-items:center}.portrait{width:130px;grid-row:span 3;margin:0}.socials{justify-content:flex-start}.research-grid,.split{grid-template-columns:1fr}.intro{align-items:start;flex-direction:column}}
+@media(max-width:560px){.wrap{width:min(calc(100% - 28px),var(--max))}section{padding:58px 0}.hero{padding-top:55px}.profile{grid-template-columns:92px 1fr;column-gap:17px}.portrait{width:92px}.socials{grid-column:1/-1}.news-list li,.pub,.timeline-item{grid-template-columns:1fr;gap:5px}.research-card{padding:25px}.footer{flex-direction:column}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="brand" href="#top">Sai Spandana Chintapalli</a><nav class="nav-links" aria-label="Primary navigation"><a href="#about">About</a><a href="#research">Research</a><a href="#publications">Publications</a><a href="#experience">Experience</a><a class="cv-link" href="Sai_Spandana_Chintapalli_Academic_CV.pdf">CV</a></nav></div></header>
+<main id="top">
+<section class="hero" id="about"><div class="wrap hero-grid">
+  <aside class="profile"><img class="portrait" src="photo.png" alt="Sai Spandana Chintapalli"><div><p class="profile-name">Sai Spandana Chintapalli</p><p class="profile-role">PhD Candidate in Bioengineering</p><p class="profile-affil">University of Pennsylvania</p><div class="socials"><a href="mailto:schinta@engineering.upenn.edu">Email</a><a href="https://scholar.google.com/citations?hl=en&amp;user=2uJEkY4AAAAJ" target="_blank" rel="noopener">Scholar</a><a href="https://github.com/SpandanaC-hub" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/sai-spandana-chintapalli-" target="_blank" rel="noopener">LinkedIn</a></div></div></aside>
+  <div class="hero-copy"><p class="kicker">ABOUT ME</p>
+  <p>I am a PhD candidate at Penn's Artificial Intelligence in Biomedical Imaging Lab, advised by Christos Davatzikos and Hao Huang, with research mentorship from Pratik Chaudhari.</p>
+  <p>My research develops generative and representation-learning methods that distinguish normal biological variability from disease-specific effects. I am particularly interested in personalized normative modeling, disease subtyping, counterfactual generation, and multimodal biomarkers of aging and neurodegeneration.</p>
+  <p>Before my PhD, I worked at Biogen, Harvard Medical School, and Regeneron Pharmaceuticals on medical-imaging pipelines, computational research integrity, and disease quantification.</p>
+  <div class="actions"><a class="button primary" href="#research">Explore my research</a><a class="button secondary" href="Sai_Spandana_Chintapalli_Academic_CV.pdf">Download CV</a></div>
+  <div class="news"><h3>Recent news</h3><ul class="news-list"><li><span class="news-date">2026</span><span><strong>CASL-VAE</strong> accepted to NeurIPS 2026.</span></li><li><span class="news-date">2026</span><span>Received a Women in Machine Learning Travel Award.</span></li><li><span class="news-date">2026</span><span>Presented unpaired-to-paired disease-effect modeling at the CVPR PHAROS-AIF-MIH Workshop.</span></li><li><span class="news-date">2025</span><span>Received second place in the Penn AI2D Symposium poster competition.</span></li></ul></div></div>
+</div></section>
 
-        <!-- Right: bio -->
-        <div>
-          <p class="bio-para">
-            I am a PhD candidate in Bioengineering at the University of Pennsylvania, where I work in the <strong>AI in Biomedical Imaging Lab</strong>. My research develops deep generative models for <em>normative modelling</em> and anomaly detection in neuroimaging radiomic data, with the goal of identifying image-derived biomarkers for neurodegenerative and neuropsychological diseases.
-          </p>
-          <p class="bio-para">
-            Before my PhD, I held research and data roles at <strong>Biogen</strong>, <strong>Harvard Medical School</strong>, and <strong>Regeneron Pharmaceuticals</strong>, working on medical image analysis pipelines, CNN-based research integrity tools, and disease quantification in pre-clinical imaging.
-          </p>
-          <p class="bio-para">
-            I hold an M.S. in Biomedical Engineering from Columbia University (GPA 3.93) and a B.Tech from Manipal Institute of Technology (Gold Medalist). My interests span representation learning, probabilistic generative models, and scalable AI systems for biomedical data.
-          </p>
-          <div class="tags">
-            <span class="tag">Deep Generative Models</span>
-            <span class="tag">Neuroimaging</span>
-            <span class="tag">Anomaly Detection</span>
-            <span class="tag">Computer Vision</span>
-            <span class="tag">Biomedical ML</span>
-          </div>
-        </div>
-      </div>
-    </div>
+<section id="research"><div class="wrap"><div class="intro"><div><p class="kicker">Research</p><h2>Models for biological variability and disease heterogeneity</h2><p class="lede">I build methods that move beyond population-average case-control effects toward subject-specific reference states, deviations, subtypes, and trajectories.</p></div></div>
+<div class="research-grid">
+  <article class="research-card"><span class="tag">Structured representation learning</span><h3>CASL-VAE</h3><p class="question">How can we discover disease subtypes and severity when healthy and affected samples are unpaired?</p><p>CASL-VAE separates shared biological variability from target-specific variation, then decomposes the salient space into discrete subtypes and continuous within-subtype heterogeneity. The same formulation supports paired counterfactual generation.</p><div class="meta"><span class="pill">NeurIPS 2026</span><span class="pill">Unpaired data</span><span class="pill">Semi-supervised clustering</span><span class="pill">Counterfactuals</span></div></article>
+  <article class="research-card"><span class="tag">Personalized normative modeling</span><h3>RESTORE</h3><p class="question">What would a patient's measurements look like without the disease-related effect?</p><p>RESTORE uses simulation-based self-supervision to estimate a personalized healthy reference and subject-specific deviation map. The framework is evaluated across structural MRI, longitudinal aging, and CSF proteomics.</p><div class="meta"><span class="pill">Self-supervised learning</span><span class="pill">Normative modeling</span><span class="pill">MRI + proteomics</span><span class="pill">Longitudinal validation</span></div></article>
+</div></div></section>
 
-    <!-- ── Research ── -->
-    <div id="research" class="section">
-      <h2>Publications</h2>
+<section id="publications"><div class="wrap"><div class="intro"><div><p class="kicker">Selected publications</p><h2>Recent and representative work</h2></div><a href="https://scholar.google.com/citations?hl=en&amp;user=2uJEkY4AAAAJ" target="_blank" rel="noopener">View Google Scholar →</a></div>
+<div class="pub-list">
+  <article class="pub"><div class="pub-year">2026</div><div><p class="pub-title">CASL-VAE: Learning Structured Latent Variables from Unpaired Data for Semi-supervised Clustering and Paired Sample Generation</p><p class="pub-authors"><strong>Sai Spandana Chintapalli</strong>, Pratik Chaudhari, Christos Davatzikos</p><p class="pub-venue">Advances in Neural Information Processing Systems (NeurIPS) · <span class="accepted">Accepted</span></p></div></article>
+  <article class="pub"><div class="pub-year">2026</div><div><p class="pub-title">Unpaired-to-Paired Data Synthesis: Learning to Model Disease Effects via Contrastive Analysis</p><p class="pub-authors"><strong>Sai Spandana Chintapalli</strong>, Pratik Chaudhari, Christos Davatzikos</p><p class="pub-venue">CVPR Workshop on PHAROS-AIF-MIH</p></div></article>
+  <article class="pub"><div class="pub-year">2025</div><div><p class="pub-title">Parsing Disease Heterogeneity in Structural and Functional MRI-Derived Measures Using Normative Modeling and Generative Adversarial Networks</p><p class="pub-authors"><strong>Sai Spandana Chintapalli</strong>, Sindhuja T. Govindarajan, Haochang Shou, Yong Fan, Hao Huang, Christos Davatzikos</p><p class="pub-venue">SPIE Medical Imaging</p><div class="pub-links"><a href="https://doi.org/10.1117/12.3040541" target="_blank" rel="noopener">DOI</a></div></div></article>
+  <article class="pub"><div class="pub-year">2024</div><div><p class="pub-title">Generative Models of MRI-Derived Neuroimaging Features and Associated Dataset of 18,000 Samples</p><p class="pub-authors"><strong>Sai Spandana Chintapalli</strong>, Rongguang Wang, Zhijian Yang, Vasiliki Tassopoulou, et al. · Co-first author</p><p class="pub-venue">Scientific Data 11, 1330</p><div class="pub-links"><a href="https://doi.org/10.1038/s41597-024-04157-4" target="_blank" rel="noopener">DOI</a></div></div></article>
+  <article class="pub"><div class="pub-year">Under review</div><div><p class="pub-title">Personalized Normative Modeling with RESTORE, a Deep Self-Supervised Framework, Reveals Individualized Disease- and Aging-Related Biological Changes in MRI and Proteomic Measures</p><p class="pub-authors"><strong>Sai Spandana Chintapalli</strong>, Sindhuja T. Govindarajan, Guray Erus, et al.</p><p class="pub-venue">Manuscript under review, 2026</p></div></article>
+</div></div></section>
 
-      <div class="two-col">
-        <div style="font-family:system-ui,sans-serif;font-size:13px;color:#666;line-height:1.8;padding-top:2px;">
-          <p>Peer-reviewed conference and journal papers.</p>
-          <p style="margin-top:10px">PhD preprints will be listed here as they become available.</p>
-        </div>
-        <div class="pub-list">
+<section id="experience"><div class="wrap"><div class="intro"><div><p class="kicker">Experience</p><h2>Research across academia and industry</h2></div></div><div class="timeline">
+  <article class="timeline-item"><div class="time">2021–present</div><div><h3>PhD Researcher</h3><p class="org">University of Pennsylvania · CBICA</p><p>Develop generative and representation-learning methods for individualized disease characterization using multi-cohort MRI, clinical, and proteomic data.</p></div></article>
+  <article class="timeline-item"><div class="time">2020–2021</div><div><h3>Data and Analytics Specialist IV</h3><p class="org">Biogen</p><p>Built MRI and PET acquisition, quality-control, de-identification, and preprocessing workflows for clinical-study data on HPC systems.</p></div></article>
+  <article class="timeline-item"><div class="time">2020</div><div><h3>Machine Learning Research Associate</h3><p class="org">Harvard Medical School</p><p>Developed metric-learning and retrieval models for near-duplicate biological image detection and co-created the BINDER benchmark.</p></div></article>
+  <article class="timeline-item"><div class="time">2019</div><div><h3>R&amp;D Intern</h3><p class="org">Regeneron Pharmaceuticals</p><p>Developed CNN segmentation and object-detection methods for quantifying inflammatory cell clusters in retinal OCT images.</p></div></article>
+</div></div></section>
 
-          <!-- Publication 1 -->
-          <div class="pub-item">
-            <div class="pub-thumb">PDF</div>
-            <div>
-              <p class="pub-title">Semantic Segmentation of Cardiac OCT Images</p>
-              <p class="pub-authors">S. Chintapalli et al.</p>
-              <p class="pub-venue"><em>IEEE 17th International Symposium on Biomedical Imaging (ISBI)</em>, 2020</p>
-              <div class="pub-links">
-                <a class="pub-link" href="https://doi.org/10.1109/ISBI45749.2020.9098495" target="_blank">DOI</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Add more publications above this line in the same format -->
-
-          <div class="pub-note">
-            PhD research (2021–present) on normative modelling and deep generative models for neuroimaging is ongoing. Preprints and publications will appear here as they become available.
-          </div>
-        </div>
-      </div>
-
-      <!-- Projects -->
-      <div style="margin-top:40px">
-        <p class="section-label">Selected Projects</p>
-        <div class="two-col">
-          <div></div>
-          <div class="project-list">
-
-            <div>
-              <p class="project-title">Tactile Visual Aid</p>
-              <p class="project-venue"><em>MedHacks, Johns Hopkins University &middot; 2019</em></p>
-              <p class="project-desc">Prototype transforming camera-captured visual information into tactile feedback for the visually impaired. Won Best Hack out of 59 submissions.</p>
-            </div>
-
-            <div>
-              <p class="project-title">Tactile Imaging Probe</p>
-              <p class="project-venue"><em>Columbia University Biodesign &middot; 2018&ndash;2019</em></p>
-              <p class="project-desc">Hand-held mechanical imaging probe for prostate cancer screening. Won Best Demo at Columbia's inhouse Biodesign design showcase.</p>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Experience ── -->
-    <div id="experience" class="section">
-      <h2>Experience &amp; Education</h2>
-
-      <div class="two-col">
-        <!-- Filter buttons -->
-        <div>
-          <p class="exp-filter-label">Filter by type:</p>
-          <div class="exp-filters">
-            <button class="filter-btn active" onclick="filterExp('all', this)">All</button>
-            <button class="filter-btn" onclick="filterExp('academic', this)">Academic</button>
-            <button class="filter-btn" onclick="filterExp('industry', this)">Industry</button>
-          </div>
-        </div>
-
-        <!-- Experience list -->
-        <div class="exp-list" id="exp-list">
-
-          <div class="exp-item" data-type="academic">
-            <div>
-              <p class="exp-year">Aug 2021&ndash;Present</p>
-              <span class="badge badge-academic">academic</span>
-            </div>
-            <div>
-              <p class="exp-role">PhD Researcher</p>
-              <p class="exp-org">AI in Biomedical Imaging Lab, UPenn</p>
-              <p class="exp-desc">Developing deep generative models for normative modelling and anomaly detection in neuroimaging radiomic data. Building computational pipelines to detect image-derived biomarkers for neurodegenerative and neuropsychological disease.</p>
-            </div>
-          </div>
-
-          <div class="exp-item" data-type="industry">
-            <div>
-              <p class="exp-year">May 2020&ndash;Aug 2021</p>
-              <span class="badge badge-industry">industry</span>
-            </div>
-            <div>
-              <p class="exp-role">Data &amp; Analytics Specialist IV</p>
-              <p class="exp-org">Biogen Inc., Cambridge MA</p>
-              <p class="exp-desc">Medical imaging data pipelines on HPC clusters &mdash; DICOM/MINC processing, PHI deidentification, big-data analytics, and data management supporting multiple downstream research and clinical studies.</p>
-            </div>
-          </div>
-
-          <div class="exp-item" data-type="industry">
-            <div>
-              <p class="exp-year">Jan 2020&ndash;May 2020</p>
-              <span class="badge badge-industry">industry</span>
-            </div>
-            <div>
-              <p class="exp-role">R&amp;D Associate</p>
-              <p class="exp-org">Harvard Medical School, Boston MA</p>
-              <p class="exp-desc">CNN architectures for computational research integrity in biomedical literature. Metric-learning for near-duplicate biological image detection; deep homography estimation for rigid image registration.</p>
-            </div>
-          </div>
-
-          <div class="exp-item" data-type="industry">
-            <div>
-              <p class="exp-year">May 2019&ndash;Aug 2019</p>
-              <span class="badge badge-industry">industry</span>
-            </div>
-            <div>
-              <p class="exp-role">R&amp;D Summer Intern</p>
-              <p class="exp-org">Regeneron Pharmaceuticals, Tarrytown NY</p>
-              <p class="exp-desc">ML algorithms for disease quantification. Automated deep learning segmentation of inflammatory cell clusters in pre-clinical OCT retinal images (mouse model of Uveitis).</p>
-            </div>
-          </div>
-
-          <div class="exp-item" data-type="academic">
-            <div>
-              <p class="exp-year">Aug 2018&ndash;Dec 2019</p>
-              <span class="badge badge-academic">academic</span>
-            </div>
-            <div>
-              <p class="exp-role">M.S. in Biomedical Engineering</p>
-              <p class="exp-org">Columbia University, New York &middot; GPA 3.93/4.00</p>
-              <p class="exp-desc">Graduate Course Assistant for Digital Image Processing and Biomedical Imaging. Research in semantic segmentation of cardiac OCT images at the Heffner Biomedical Imaging Lab (IEEE ISBI 2020). Shardashish Interschool Fellowship recipient.</p>
-            </div>
-          </div>
-
-          <div class="exp-item" data-type="academic">
-            <div>
-              <p class="exp-year">Jul 2014&ndash;Jul 2018</p>
-              <span class="badge badge-academic">academic</span>
-            </div>
-            <div>
-              <p class="exp-role">B.Tech in Biomedical Engineering</p>
-              <p class="exp-org">Manipal Institute of Technology &middot; GPA 9.08/10</p>
-              <p class="exp-desc">AICTE Scholarship, Diamond Jubilee Award, Academic Gold Medal. Undergraduate research on geometric feature extraction to classify Candida albicans morphologies in sputum-smear microscopy images.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Skills ── -->
-    <div class="section">
-      <h2>Technical Skills</h2>
-      <div class="two-col">
-        <div></div>
-        <div>
-          <div class="skill-row">
-            <span class="skill-label">Languages</span>
-            <span class="skill-val">Python, MATLAB, SQLite, Shell Scripting</span>
-          </div>
-          <div class="skill-row">
-            <span class="skill-label">Frameworks</span>
-            <span class="skill-val">PyTorch, TensorFlow, Keras, scikit-learn, OpenCV, PIL, pandas</span>
-          </div>
-          <div class="skill-row">
-            <span class="skill-label">Imaging Tools</span>
-            <span class="skill-val">MicroDicom, ITK-Snap, 3D-Slicer, DICOM/MINC Toolkit, Inspector (MR Spectroscopy)</span>
-          </div>
-          <div class="skill-row">
-            <span class="skill-label">Infrastructure</span>
-            <span class="skill-val">HPC cluster computing, Databricks</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Contact ── -->
-    <div id="contact" class="section" style="border-bottom:none; padding-bottom:60px">
-      <h2>Contact</h2>
-      <div class="two-col">
-        <div></div>
-        <div>
-          <p class="contact-intro">I'm open to research collaborations, internship inquiries, and academic conversations at the intersection of ML and biomedicine. Please reach out by email.</p>
-          <div class="contact-row">
-            <div><span class="contact-label">Email (UPenn)</span><a href="mailto:schinta@seas.upenn.edu">schinta@seas.upenn.edu</a></div>
-            <div><span class="contact-label">Email (alt)</span><a href="mailto:sc4425@columbia.edu">sc4425@columbia.edu</a></div>
-            <div><span class="contact-label">GitHub</span><a href="https://github.com/SpandanaC-hub" target="_blank">SpandanaC-hub</a></div>
-            <div><span class="contact-label">Location</span><span style="color:#444">Philadelphia, PA</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <footer>
-    &copy; 2026 Sai Spandana Chintapalli
-  </footer>
-
-  <script>
-    function filterExp(type, btn) {
-      // Update button styles
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      // Show/hide items
-      document.querySelectorAll('.exp-item').forEach(item => {
-        if (type === 'all' || item.dataset.type === type) {
-          item.style.display = 'grid';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    }
-  </script>
-
+<section><div class="wrap split"><div><p class="kicker">Innovation and recognition</p><h2>Beyond publications</h2><ul class="compact"><li><strong>U.S. Patent 11,928,981 B2</strong> for Tactile Vision, granted in 2024.</li><li><strong>Co-founder of Fovea</strong>, a wearable tactile sensory-substitution system for people with blindness, which won the University of Toronto Entrepreneurship Hatchery</strong> NEST Demo Day, 2021.</li><li><strong>Grand Prize, MedHacks</strong>, Johns Hopkins University, 2019.</li><li><strong>Second Place Poster Award</strong>, Penn AI2D Symposium, 2025.</li></ul></div>
+<div class="contact" id="contact"><p class="kicker">Contact</p><h2>Research collaborations and opportunities</h2><p>I am interested in research-scientist opportunities at the intersection of machine learning, medical imaging, and computational biology.</p><p><a href="mailto:schinta@engineering.upenn.edu">schinta@engineering.upenn.edu</a><br>Philadelphia, Pennsylvania</p><div class="actions"><a class="button primary" href="mailto:schinta@engineering.upenn.edu">Email me</a><a class="button secondary" href="Sai_Spandana_Chintapalli_Academic_CV.pdf">Curriculum vitae</a></div></div></div></section>
+</main>
+<footer><div class="wrap footer"><span>© 2026 Sai Spandana Chintapalli</span><span>Biomedical machine learning · Neuroimaging · Generative models</span></div></footer>
+</body>
+</html>
 </body>
 </html>
