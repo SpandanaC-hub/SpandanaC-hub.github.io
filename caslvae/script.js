@@ -11,7 +11,7 @@ const modes = {
     copy: 'Encode a sample’s common latent z, then decode it with the preset reference category and zero continuous salient code. The result is a model-estimated paired reference counterpart.'
   },
   deviation: {
-    formula: 'Δ = x̂ − ỹ  ·  DI = mean |Δ|',
+    formula: 'Δ = x̂ − ỹ ;  DI = mean |Δ|',
     title: 'Measure target-specific variation in feature space.',
     copy: 'Subtract the paired reference from the reconstructed sample to isolate the salient variation. Its mean absolute value across features gives an individual deviation index.'
   }
