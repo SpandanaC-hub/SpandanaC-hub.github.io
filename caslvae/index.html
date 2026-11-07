@@ -24,7 +24,7 @@
       <p class="authors"><a href="mailto:schinta@engineering.upenn.edu">Sai Spandana Chintapalli</a><span>Pratik Chaudhari<sup>†</sup></span><span>Christos Davatzikos<sup>†</sup></span></p>
       <p class="affiliation">Center for AI and Data Science for Integrated Diagnostics (AI2D)</p>
       <p class="advising">University of Pennsylvania <span>·</span> <sup>†</sup> Equal advising</p>
-      <div class="hero-actions"><a class="button primary" href="assets/caslvae-paper.pdf">Read the paper <span aria-hidden="true">↗</span></a><a class="button" href="https://github.com/SpandanaC-hub/CASLVAE"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-14-2 16"/></svg> View code</a><a class="button citation-link" href="#citation">Cite this work <span aria-hidden="true">↓</span></a></div>
+      <div class="hero-actions"><a class="button primary" href="https://arxiv.org/pdf/2607.08254">Paper (arXiv) <span aria-hidden="true">↗</span></a><a class="button" href="https://github.com/SpandanaC-hub/CASLVAE"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-14-2 16"/></svg> View code</a><a class="button citation-link" href="#citation">Cite this work <span aria-hidden="true">↓</span></a></div>
       <p class="hero-takeaway">Discover what is <em>shared</em>.<br>Understand what makes the target <em>different</em>.</p>
       <div class="latent-strip" aria-label="Three complementary latent factors"><div><span class="latent-symbol common">z</span><span>Common variation<small>Shared across populations</small></span></div><span class="strip-plus" aria-hidden="true">+</span><div><span class="latent-symbol category">s<sub>cat</sub></span><span>Salient subtypes<small>Discrete target structure</small></span></div><span class="strip-plus" aria-hidden="true">+</span><div><span class="latent-symbol continuous">s<sub>cont</sub></span><span>Within-subtype variation<small>Continuous individual differences</small></span></div></div>
     </section>
@@ -51,9 +51,9 @@
       <p class="table-note">Parentheses show 95% confidence intervals. Values from Tables 1–2 of the paper; see the paper for baselines and statistical comparisons.</p>
     </section>
 
-    <section class="clinical section"><div class="clinical-visual"><figure><img loading="lazy" src="assets/adni-subtypes.png" width="495" height="399" alt="Two prototypical target patterns learned in ADNI MCI and AD participants relative to cognitively normal participants."><figcaption><span>FIG. 4</span> ADNI target patterns relative to the cognitively normal reference population.</figcaption></figure></div><div class="clinical-copy"><p class="eyebrow">04 / REAL-WORLD APPLICATION</p><h2>Characterizing heterogeneity in Alzheimer's disease.</h2><p>In ADNI, stability-based category selection yields two target patterns with different regional distributions of volume loss. Individual deviation estimates are associated with clinical and biomarker measures.</p><p class="quiet">These learned categories may reflect subtype, severity, or overlapping mechanisms. Biological interpretation requires independent validation.</p><a class="text-link" href="assets/caslvae-paper.pdf">Explore the experiments in the paper <span aria-hidden="true">↗</span></a></div></section>
+    <section class="clinical section"><div class="clinical-visual"><figure><img loading="lazy" src="assets/adni-subtypes.png" width="495" height="399" alt="Two prototypical target patterns learned in ADNI MCI and AD participants relative to cognitively normal participants."><figcaption><span>FIG. 4</span> ADNI target patterns relative to the cognitively normal reference population.</figcaption></figure></div><div class="clinical-copy"><p class="eyebrow">04 / REAL-WORLD APPLICATION</p><h2>Characterizing heterogeneity in Alzheimer's disease.</h2><p>In ADNI, stability-based category selection yields two target patterns with different regional distributions of volume loss. Individual deviation estimates are associated with clinical and biomarker measures.</p><p class="quiet">These learned categories may reflect subtype, severity, or overlapping mechanisms. Biological interpretation requires independent validation.</p><a class="text-link" href="https://arxiv.org/pdf/2607.08254">Explore the experiments in the paper <span aria-hidden="true">↗</span></a></div></section>
 
-    <section id="resources" class="resources section"><div><p class="eyebrow">05 / GET STARTED</p><h2>Bring your own<br>reference–target data.</h2><p>Explore the implementation, prepare feature measurements, and train CASL-VAE on your populations.</p></div><div class="resource-links"><a href="https://github.com/SpandanaC-hub/CASLVAE"><span><small>IMPLEMENTATION</small>Code & installation</span><span aria-hidden="true">↗</span></a><a href="https://github.com/SpandanaC-hub/CASLVAE/blob/main/docs/usage.md"><span><small>PRACTICAL GUIDE</small>Training & inference examples</span><span aria-hidden="true">↗</span></a><a href="assets/caslvae-paper.pdf"><span><small>MANUSCRIPT</small>Method, experiments & appendix</span><span aria-hidden="true">↗</span></a></div></section>
+    <section id="resources" class="resources section"><div><p class="eyebrow">05 / GET STARTED</p><h2>Bring your own<br>reference–target data.</h2><p>Explore the implementation, prepare feature measurements, and train CASL-VAE on your populations.</p></div><div class="resource-links"><a href="https://github.com/SpandanaC-hub/CASLVAE"><span><small>IMPLEMENTATION</small>Code & installation</span><span aria-hidden="true">↗</span></a><a href="https://github.com/SpandanaC-hub/CASLVAE/blob/main/docs/usage.md"><span><small>PRACTICAL GUIDE</small>Training & inference examples</span><span aria-hidden="true">↗</span></a><a href="https://arxiv.org/pdf/2607.08254"><span><small>ARXIV PREPRINT</small>Method, experiments & appendix</span><span aria-hidden="true">↗</span></a></div></section>
 
     <section id="citation" class="section citation"><div class="section-heading"><div><p class="eyebrow">06 / CITATION</p><h2>Build on this work.</h2></div><button type="button" class="button" id="copy-citation">Copy BibTeX <span aria-hidden="true">⧉</span></button></div><pre><code id="bibtex">@misc{chintapalli2026casl,
   title={CASL-VAE: Learning Structured Latent Variables from Unpaired Data
@@ -61,9 +61,12 @@
   author={Chintapalli, Sai Spandana and Chaudhari, Pratik
           and Davatzikos, Christos},
   year={2026},
-  note={Manuscript}
+  eprint={2607.08254},
+  archivePrefix={arXiv},
+  url={https://arxiv.org/abs/2607.08254}
 }</code></pre><p id="copy-status" class="copy-status" role="status" aria-live="polite"></p></section>
   </main>
   <footer><span>CASL-VAE <span class="footer-dot">/</span> University of Pennsylvania</span><a href="mailto:schinta@engineering.upenn.edu">Contact <span aria-hidden="true">↗</span></a><a href="#top">Back to top ↑</a></footer>
 </body>
 </html>
+
