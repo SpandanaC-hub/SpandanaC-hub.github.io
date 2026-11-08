@@ -38,9 +38,12 @@ main{overflow:hidden}section{padding:78px 0;border-bottom:1px solid var(--line)}
 
 <section id="research"><div class="wrap"><div class="intro"><div><p class="kicker">Research</p><h2>Models for biological variability and disease heterogeneity</h2><p class="lede">I build methods that move beyond population-average case-control effects toward subject-specific reference states, deviations, subtypes, and trajectories.</p></div></div>
 <div class="research-grid">
-  <article class="research-card"><span class="tag">Structured representation learning</span><h3>CASL-VAE</h3><p class="question">How can we discover disease subtypes and severity when healthy and affected samples are unpaired?</p><p>CASL-VAE separates shared biological variability from target-specific variation, then decomposes the salient space into discrete subtypes and continuous within-subtype heterogeneity. The same formulation supports paired counterfactual generation.</p><div class="meta"><span class="pill">NeurIPS 2026</span><span class="pill">Unpaired data</span><span class="pill">Semi-supervised clustering</span><span class="pill">Counterfactuals</span></div>
+  <article class="research-card"><span class="tag">Structured representation learning</span><h3>CASL-VAE</h3><div class="pub-links">
+      <a href="caslvae/">Project page</a>
+      <a href="https://arxiv.org/abs/2607.08254" target="_blank" rel="noopener">arXiv</a>
+      <a href="https://github.com/SpandanaC-hub/CASLVAE" target="_blank" rel="noopener">Code</a>
+    </div><p class="question">How can we discover disease subtypes and severity when healthy and affected samples are unpaired?</p><p>CASL-VAE separates shared biological variability from target-specific variation, then decomposes the salient space into discrete subtypes and continuous within-subtype heterogeneity. The same formulation supports paired counterfactual generation.</p><div class="meta"><span class="pill">NeurIPS 2026</span><span class="pill">Unpaired data</span><span class="pill">Semi-supervised clustering</span><span class="pill">Counterfactuals</span></div>
   </div></article>
-  
   <article class="research-card"><span class="tag">Personalized normative modeling</span><h3>RESTORE</h3><p class="question">What would a patient's measurements look like without the disease-related effect?</p><p>RESTORE uses simulation-based self-supervision to estimate a personalized healthy reference and subject-specific deviation map. The framework is evaluated across structural MRI, longitudinal aging, and CSF proteomics.</p><div class="meta"><span class="pill">Self-supervised learning</span><span class="pill">Normative modeling</span><span class="pill">MRI + proteomics</span><span class="pill">Longitudinal validation</span></div></article>
 </div></div></section>
 
